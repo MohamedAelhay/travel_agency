@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = "/users"
 LOGIN_URL='/users/login'
+AUTH_USER_MODEL = 'users.CustomUser' 
 
 # Application definition
 

@@ -1,42 +1,41 @@
 <h2>sign up</h2>
-<form method="post"> 
-    {%csrf_token%}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="avatar">
     <div class="fieldWrapper">
-        <div>
-            {{ form.username.errors.as_text  }}
+            <div>
+                {{ form.username.errors.as_text  }}
+            </div>
+            <div>
+                {{ form.username.label_tag }}
+            </div>
+            <div>
+                {{ form.username }}
+            </div>
         </div>
-        <div>
-            {{ form.username.label_tag }}
-        </div>
-        <div>
-            {{ form.username }}
-        </div>
-    </div>
-
-    <div class="fieldWrapper">
-        <div>
-            {{ form.email.errors.as_text  }}
-        </div>
-        <div>
-            {{ form.email.label_tag }}
-        </div>
-        <div>
-            {{ form.email }}
-        </div>
-    </div>
-
-    <div class="fieldWrapper">
-        <div>
-            {{ form.password.errors.as_text  }}
-        </div>
-        <div>
-            {{ form.password.label_tag }}
-        </div>
-        <div>
-            {{ form.password }}
-        </div>
-    </div>
     
-            
-    <button type="submit"> sign up </button> 
+        <div class="fieldWrapper">
+            <div>
+                {{ form.email.errors.as_text  }}
+            </div>
+            <div>
+                {{ form.email.label_tag }}
+            </div>
+            <div>
+                {{ form.email }}
+            </div>
+        </div>
+    
+        <div class="fieldWrapper">
+            <div>
+                {{ form.password.errors.as_text  }}
+            </div>
+            <div>
+                {{ form.password.label_tag }}
+            </div>
+            <div>
+                {{ form.password }}
+            </div>
+        </div>
+<button type="submit">Upload</button>
 </form>

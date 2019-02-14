@@ -15,12 +15,15 @@ def index(request):
         return HttpResponse('<h1>Hello Stranger!</h1>')
 
 def signup_view(request):
-    form = UserSignUpForm(request.POST or None)
+    if request.method == 'POST':
+        form = UserSignUpForm(request.POST, request.FILES)
+    else:
+        form = UserSignUpForm(None)
+
     if form.is_valid():
-            user        = form.save(commit = False)
+            user         = form.save(commit = False)
             username     = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password')
-
             user.set_password(raw_password)            
             user.save()
 
