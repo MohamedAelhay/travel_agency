@@ -27,11 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = "/users"
+LOGIN_URL='/users/login'
+AUTH_USER_MODEL = 'users.CustomUser' 
 
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
     'places',
+=======
+>>>>>>> e9ec747f100ae3501131747d41cea7e52a0cb258
     'users',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,7 +62,7 @@ ROOT_URLCONF = 'travel_agency.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'users/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +91,6 @@ DATABASES = {
         'PASSWORD': 'Os@12345'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
