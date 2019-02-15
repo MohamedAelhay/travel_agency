@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'users',
+    'places',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -80,8 +81,8 @@ DATABASES = {
         'HOST':   'localhost', 
         'PORT':   '3306',
         'NAME':   'travel_agency',
-        'USER':   'hussien',
-        'PASSWORD': '12345'
+        'USER':   'phpmyadmin',
+        'PASSWORD': 'Os@12345'
     }
 }
 

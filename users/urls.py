@@ -9,3 +9,9 @@ urlpatterns = [
     # url(r'^home/$', views.get_all_users),
     # url(r'^new', views.new)
 ]
+
+
+
+
+
+
