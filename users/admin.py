@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from .models import CustomUser
 
+
 class CustomUserAdmin(admin.ModelAdmin):
     model = CustomUser
 
@@ -11,7 +12,7 @@ class CustomUserAdmin(admin.ModelAdmin):
         [
             "user info", 
             {
-                "fields": ['username', 'email', 'password','avatar'] 
+                "fields": ['username', 'email', 'password', 'avatar']
             }
         ],
         [
@@ -24,4 +25,6 @@ class CustomUserAdmin(admin.ModelAdmin):
 
     list_display  = ['username', 'email', 'password', 'avatar']
 
+
 admin.site.register(CustomUser, CustomUserAdmin)
+

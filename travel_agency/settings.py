@@ -34,10 +34,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
     'places',
-=======
->>>>>>> e9ec747f100ae3501131747d41cea7e52a0cb258
+    'blog',
     'users',
     'django.contrib.admin',
     'django.contrib.auth',

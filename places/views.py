@@ -7,7 +7,7 @@ from .models import Country, City, Location, Hotel, CityHotel
 
 # index Test :-
 def index(request):
-    return HttpResponse("<h1>Hello Django</h1>")
+    return HttpResponse("<h1>Hello Places</h1>")
 
 
 # Country Methods :-

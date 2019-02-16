@@ -9,31 +9,31 @@ from .models import Country, City, Location, Hotel, CityHotel
 
 class CustomCountry(admin.ModelAdmin):
     fieldsets = [
-        ['Country Info', {'fields': ['country_Name']}],
-        ['Cities', {'fields': ['country_Name']}]
+        ['Country Info', {'fields': ['country_Name', 'country_Pic']}],
+        # ['Cities', {'fields': ['country_Name']}]
     ]
-    list_display = ['country_Name']
+    list_display = ['country_Name', 'country_Pic']
     list_filter = ['country_Name']
     search_fields = ['country_Name']
 
 
 class CustomCity(admin.ModelAdmin):
     fieldsets = [
-        ['City Info', {'fields': ['city_Name', 'description']}],
-        ['Cities', {'fields': ['country_Name']}]
+        ['City Info', {'fields': ['city_Name', 'city_Description', 'image_tag']}],
+        ['Country', {'fields': ['country_Name']}]
     ]
-    list_display = ['city_Name', 'city_Description']
-    list_filter = ['country_Name__country_Name']
-    search_fields = ['city_Name']
+    list_display = ['city_Name', 'city_Description', 'country_Name', 'image_tag']
+    list_filter = ['country_Name']
+    search_fields = ['city_Name', 'country_Name']
 
 
 class CustomLocation(admin.ModelAdmin):
     fieldsets = [
-        ['Location Info', {'fields': ['loc_Name']}],
+        ['Location Info', {'fields': ['loc_Name', 'loc_Description', 'loc_Pic']}],
         ['City', {'fields': ['city_Name']}]
     ]
-    list_display = ['loc_Name', 'city_Name']
-    list_filter = ['city_Name__city_Name']
+    list_display = ['loc_Name', 'loc_Description', 'city_Name', 'loc_Pic']
+    list_filter = ['city_Name']
     search_fields = ['city_Name', 'loc_Name']
 
 
