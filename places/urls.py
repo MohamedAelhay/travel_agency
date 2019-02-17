@@ -4,9 +4,11 @@ from places import views
 urlpatterns = [
     url(r'^$', views.index),
     # Country Urls:-
-    url(r'^countries/$', views.getAllCountries),
-    url(r'^(?P<countryId>[0-9]+)/$', views.getCountryById),
+    url(r'^(?P<countryName>[a-zA-Z ]+)$', views.country_page),
+    # url(r'^(?P<countryId>[0-9]+)/$', views.getCountryById),
     # City Urls:-
+    url(r'^cities/[0-9]/rentCar/$', views.rentCar),
+    url(r'^cities/(?P<cityId>[0-9]+)/rate/$', views.rateCity),
     url(r'^cities/$', views.getAllCities),
     url(r'^(?P<cityId>[0-9]+)/$', views.getCityById),
     # Locations Urls:-
@@ -15,6 +17,8 @@ urlpatterns = [
     # Hotels Urls:-
     url(r'^hotels/$', views.getAllHotels),
     url(r'^(?P<hotelId>[0-9]+)/$', views.getHotelById),
+    url(r'^rentcar/$', views.rentCar),
+    url(r'^hotelres/$', views.hotelReservation),
 ]
 
 

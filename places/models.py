@@ -1,8 +1,8 @@
-import os
 from django.db import models
+from users.models import CustomUser
+from datetime import datetime    
 
 # Create your models here.
-from django.utils.safestring import mark_safe
 
 
 class Country(models.Model):
@@ -65,10 +65,15 @@ class Hotel(models.Model):
         return self.hotel_Name
 
 
-class Room(models.Model):
-    rooms = models.IntegerField(max_length=3)
-    room_type = models.CharField(choices=[(1, "Single"), (2, "Double"), (3, "Triple")], max_length=2)
+class UserHotelReservation(models.Model):
     hotel_Name = models.ForeignKey(Hotel)
+    user_Name = models.ForeignKey(CustomUser)
+    rooms = models.IntegerField()
+    room_type = models.IntegerField(choices=[(1, "Single"), (2, "Double"), (3, "Triple")])
+    res_Date = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return "Hotel Reservation"
 
 
 class CityHotel(models.Model):
@@ -77,6 +82,37 @@ class CityHotel(models.Model):
 
     class Meta:
         verbose_name_plural = "Hotels"
+
+
+class UserCityRate(models.Model):
+    user = models.ForeignKey(CustomUser)
+    city = models.ForeignKey(City)
+    rate    = models.IntegerField(
+        default = 3,
+        choices = (
+            (1, 'Bad'),
+            (2, 'Below Average'),
+            (3, 'Average'),
+            (4, 'Very Good'),
+            (5, 'Excelent'),
+        )
+    )
+
+    class Meta:
+        unique_together = (('user', 'city'),)
+    
+    def __str__(self):
+        return self.rate
+
+
+class UserCarRent(models.Model):
+    pickup_loc   = models.ForeignKey(Location, related_name = 'pickup_loc')
+    dropoff_loc  = models.ForeignKey(Location, related_name = 'dropoff_loc')
+    user     = models.ForeignKey(CustomUser)
+    time     = models.DateTimeField(default = datetime.now)
+    
+    def __str__(self):
+        return self.time
 
 
 
