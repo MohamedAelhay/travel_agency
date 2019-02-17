@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Country, City, Location, Hotel, CityHotel
+from .models import Country, City, Location, Hotel, CityHotel,UserCityRate,UserCarRent
+from .forms import UserCityRateForm, UserCarRentForm
 
 # Create your views here.
 
@@ -36,7 +37,6 @@ def getCityById(request, cityId):
     context = {"city": city}
     return render(request, "cityPage.html", context)
 
-
 # Location Methods :-
 def getAllLocations(request):
     locations = Location.objects.all()
@@ -62,6 +62,56 @@ def getHotelById(request, hotelId):
     context = {"hotel": hotel}
     return render(request, "hotelPage.html", context)
 
+
+#services
+
+def getUserCityRate(request, cityId):
+    rate = UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId)
+    context = {"rate": rate}
+    return context
+
+def getUserCarRentals(request, cityId):
+    UserCityRatentals = UserCarRent.objects.filter(user_id = request.user.id)
+    context = {"rentals": UserCityRatentals}
+    return context
+
+
+
+def rateCity(request, cityId):
+    form = UserCityRateForm(request.POST or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            rate = form.cleaned_data.get('rate')
+            try:
+                UserCityRate.objects.create(user_id = request.user.id, city_id = cityId, rate = rate)
+            except:
+                UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
+
+        return HttpResponseRedirect('/places/cities/rate/')
+
+    else:
+        form = UserCityRateForm()
+        context = {"form": form}
+        return render(request, "rate.html", context)
+
+def rentCar(request):
+    form = UserCarRentForm(request.POST or None)
+    
+    if request.method == 'POST':
+        if form.is_valid():
+            UserCarRent.objects.create(
+                user_id        = request.user.id,
+                pickup_loc_id  = request.POST.get('pickup_loc'),
+                dropoff_loc_id = request.POST.get('dropoff_loc')
+            )
+
+        return HttpResponseRedirect('/places/cities/rentCar/')
+    
+    else:
+        form = UserCarRentForm()
+        context = {"form": form}
+        return render(request, "rate.html", context)       
 
 # def newCountry(request):
 #     if request.method == 'POST':

@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+STATIC_URL = '/static/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -85,8 +85,8 @@ DATABASES = {
         'HOST':   'localhost', 
         'PORT':   '3306',
         'NAME':   'travel_agency',
-        'USER':   'phpmyadmin',
-        'PASSWORD': 'Os@12345'
+        'USER':   'hussien',
+        'PASSWORD': '12345'
     }
 }
 

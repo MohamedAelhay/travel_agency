@@ -7,6 +7,8 @@ urlpatterns = [
     url(r'^countries/$', views.getAllCountries),
     url(r'^(?P<countryId>[0-9]+)/$', views.getCountryById),
     # City Urls:-
+    url(r'^cities/rentCar/$', views.rentCar),
+    url(r'^cities/rate/$', views.rateCity),
     url(r'^cities/$', views.getAllCities),
     url(r'^(?P<cityId>[0-9]+)/$', views.getCityById),
     # Locations Urls:-

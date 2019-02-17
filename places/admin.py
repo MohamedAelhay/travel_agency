@@ -19,7 +19,7 @@ class CustomCountry(admin.ModelAdmin):
 
 class CustomCity(admin.ModelAdmin):
     fieldsets = [
-        ['City Info', {'fields': ['city_Name', 'city_Description', 'image_tag']}],
+        ['City Info', {'fields': ['city_Name', 'city_Description', 'city_Pic']}],
         ['Country', {'fields': ['country_Name']}]
     ]
     list_display = ['city_Name', 'city_Description', 'country_Name', 'image_tag']
