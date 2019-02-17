@@ -2,28 +2,30 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Country, City, Location, Hotel, CityHotel,UserCityRate,UserCarRent
 from .forms import UserCityRateForm, UserCarRentForm
+from pprint import *
 
 # Create your views here.
 
 
 # index Test :-
 def index(request):
-    return HttpResponse("<h1>Hello Places</h1>")
+    countries = getAllCountries()
+    context = {"countries": countries }
+    return render(request, "index.html", context)
 
+def country_page(request, countryName):
+    try:
+        country = Country.objects.get(country_Name = countryName)
+        cities  = City.objects.filter(country_Name_id = country.id)
+        context = {"country": country, "cities":cities}
+        return render(request, "country.html", context)
+    except:
+        return HttpResponseRedirect("/places/")
 
 # Country Methods :-
-def getAllCountries(request):
+def getAllCountries():
     countries = Country.objects.all()
-    context = {"countries": countries}
-    # return HttpResponse(countries)
-    return render(request, "countriesPage.html", context)
-
-
-def getCountryById(request, countryId):
-    country = Country.objects.get(id=eval(countryId))
-    context = {"country": country}
-    return render(request, "countryPage.html", context)
-
+    return countries
 
 # City Methods :-
 def getAllCities(request):
