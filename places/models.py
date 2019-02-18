@@ -89,8 +89,9 @@ class UserCityRate(models.Model):
     user = models.ForeignKey(CustomUser)
     city = models.ForeignKey(City)
     rate    = models.IntegerField(
-        default = 3,
+        default = 0,
         choices = (
+            (0, '---'),
             (1, 'Bad'),
             (2, 'Below Average'),
             (3, 'Average'),
@@ -114,15 +115,5 @@ class UserCarRent(models.Model):
     
     def __str__(self):
         return self.time
-
-
-
-
-
-
-
-
-
-
 
 

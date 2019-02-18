@@ -2,7 +2,8 @@ from django.shortcuts    import render
 from django.http         import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, authenticate,logout
 from django.shortcuts    import render, redirect
-from .forms              import UserSignUpForm, UserloginForm
+from .forms              import UserSignUpForm, UserloginForm, UserEditForm
+from places.models import CustomUser
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -65,5 +66,20 @@ def logout_view(request):
     return redirect('/users/')
 
 
+def getUserById(request,userId):
+    user=CustomUser.objects.get(id=eval(userId))
+    context={"user":user}
+    return render(request,"registration/single.html",context)
 
 
+def editProfile(request,userId):
+    user=CustomUser.objects.get(id=eval(userId))
+    if request.method=='POST':
+        form=UserEditForm(request.POST,instance=user)
+        if form.is_valid:
+            form.save()
+            return HttpResponseRedirect("/users/login/")
+    else:
+        form=UserEditForm(instance=user)
+        context={"user_form":form}
+        return render(request,"registration/editUser.html",context)
