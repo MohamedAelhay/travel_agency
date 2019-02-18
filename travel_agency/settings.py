@@ -85,8 +85,8 @@ DATABASES = {
         'HOST':   'localhost', 
         'PORT':   '3306',
         'NAME':   'travel_agency',
-        'USER':   'hussien',
-        'PASSWORD': '12345'
+        'USER':   'phpmyadmin',
+        'PASSWORD': 'Os@12345'
     }
 }
 

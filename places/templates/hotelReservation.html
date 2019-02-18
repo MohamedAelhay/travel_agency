@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Reservation</title>
+</head>
+<body>
+    <h2>Hotel Reservation</h2>
+    <form method="post"> {%csrf_token%}
+        {{hotel_form.as_p}}
+        <button type="submit"> submit reservation </button>
+    </form>
+</body>
+</html>

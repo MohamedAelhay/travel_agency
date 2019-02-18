@@ -17,6 +17,8 @@ urlpatterns = [
     # Hotels Urls:-
     url(r'^hotels/$', views.getAllHotels),
     url(r'^(?P<hotelId>[0-9]+)/$', views.getHotelById),
+    url(r'^rentcar/$', views.rentCar),
+    url(r'^hotelres/$', views.hotelReservation),
 ]
 
 

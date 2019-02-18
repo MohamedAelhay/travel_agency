@@ -1,10 +1,8 @@
-import os
 from django.db import models
 from users.models import CustomUser
 from datetime import datetime    
 
 # Create your models here.
-from django.utils.safestring import mark_safe
 
 
 class Country(models.Model):
@@ -67,10 +65,16 @@ class Hotel(models.Model):
         return self.hotel_Name
 
 
-class Room(models.Model):
-    rooms = models.IntegerField(max_length=3)
-    room_type = models.CharField(choices=[(1, "Single"), (2, "Double"), (3, "Triple")], max_length=2)
+class UserHotelReservation(models.Model):
     hotel_Name = models.ForeignKey(Hotel)
+    user_Name = models.ForeignKey(CustomUser)
+    rooms = models.IntegerField()
+    room_type = models.IntegerField(choices=[(1, "Single"), (2, "Double"), (3, "Triple")])
+    from_Date = models.DateTimeField(default=datetime.now)
+    to_Date = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return "Hotel Reservation"
 
 
 class CityHotel(models.Model):
@@ -79,6 +83,7 @@ class CityHotel(models.Model):
 
     class Meta:
         verbose_name_plural = "Hotels"
+
 
 class UserCityRate(models.Model):
     user = models.ForeignKey(CustomUser)
@@ -101,6 +106,7 @@ class UserCityRate(models.Model):
     def __str__(self):
         return self.rate
 
+
 class UserCarRent(models.Model):
     pickup_loc   = models.ForeignKey(Location, related_name = 'pickup_loc')
     dropoff_loc  = models.ForeignKey(Location, related_name = 'dropoff_loc')
@@ -109,15 +115,5 @@ class UserCarRent(models.Model):
     
     def __str__(self):
         return self.time
-
-
-
-
-
-
-
-
-
-
 
 

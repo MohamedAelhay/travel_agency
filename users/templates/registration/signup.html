@@ -1,7 +1,17 @@
 <h2>sign up</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="avatar">
+    <div class="fieldWrapper">
+            <div>
+                {{ form.avatar.errors.as_text  }}
+            </div>
+            <div>
+                {{ form.avatar.label_tag }}
+            </div>
+            <div>
+                {{ form.avatar }}
+            </div>
+        </div>
     <div class="fieldWrapper">
             <div>
                 {{ form.username.errors.as_text  }}
