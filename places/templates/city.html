@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body> 
+        <p> {{ city.city_Name }}</p>
+        <img src="/media/{{ city.city_Pic }}">
+
+        {% if request.user.is_authenticated %}
+        <h2>rating</h2>
+            <form method="post"> 
+                {%csrf_token%}
+                {{form.as_p}} 
+                <button type="submit"> submit rating </button> 
+            </form>
+        {% endif %}
+
+</body>
+</html>

@@ -22,6 +22,52 @@ def country_page(request, countryName):
     except:
         return HttpResponseRedirect("/places/")
 
+def city_page(request, countryName, cityName):
+    return city_handler.handle_request(request, countryName, cityName)
+
+class city_handler:
+    @staticmethod
+    def handle_request(request, countryName,cityName):
+        try:
+            country = Country.objects.get(country_Name = countryName)
+            city    = City.objects.get(city_Name = cityName, country_Name_id = country.id)
+
+            if request.method == 'GET':
+                form = city_handler.__get_saved_user_rating_form(request, city.id)
+
+            if request.method == 'POST':
+                form = UserCityRateForm(request.POST)
+                city_handler.__rate_city(request, form, city.id)
+
+            context = {"country": country, "city":city,"form": form}
+            return render(request, "city.html", context) 
+        except:
+            return HttpResponseRedirect("/places/")
+
+    @staticmethod
+    def __get_saved_user_rating_form(request,cityId):
+        if request.user.is_authenticated:
+            try:
+                rate_value = UserCityRate.objects.get(user_id = request.user.id, city_id = cityId).rate
+                user_rating = {"rate":rate_value}
+            except :
+                user_rating = None
+            finally:            
+                return UserCityRateForm(user_rating)
+        else:
+            return None
+
+    @staticmethod
+    def __rate_city(request,form, cityId):
+        if form.is_valid():
+            rate = form.cleaned_data.get('rate')
+            try:
+                UserCityRate.objects.create(user_id = request.user.id, city_id = cityId, rate = rate)
+            except:
+                UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
+
+
+
 # Country Methods :-
 def getAllCountries():
     countries = Country.objects.all()
@@ -79,23 +125,21 @@ def getUserCarRentals(request, cityId):
 
 
 
-def rateCity(request, cityId):
-    form = UserCityRateForm(request.POST or None)
+# def handle_city_rate(request, cityId):
+#     form_data = request.POST or None
+#     form      = UserCityRateForm(form_data)
 
-    if request.method == 'POST':
-        if form.is_valid():
-            rate = form.cleaned_data.get('rate')
-            try:
-                UserCityRate.objects.create(user_id = request.user.id, city_id = cityId, rate = rate)
-            except:
-                UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
-
-        return HttpResponseRedirect('/places/cities/rate/')
-
-    else:
-        form = UserCityRateForm()
-        context = {"form": form}
-        return render(request, "rate.html", context)
+#     if request.method == 'POST':
+#         if form.is_valid():
+#             rate = form.cleaned_data.get('rate')
+#             try:
+#                 UserCityRate.objects.create(user_id = request.user.id, city_id = cityId, rate = rate)
+#             except:
+#                 UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
+#         else:
+#             form_data = None
+    
+#     return form_data
 
 def rentCar(request):
     form = UserCarRentForm(request.POST or None)
@@ -150,3 +194,67 @@ def rentCar(request):
 
 
 
+
+# class city_handler:
+#     @staticmethod
+#     def handle_request(request, countryName,cityName):
+#         try:
+#             country = Country.objects.get(country_Name = countryName)
+#             city    = City.objects.get(city_Name = cityName, country_Name_id = country.id)
+
+#             if request.method == 'GET':
+#                 form = city_handler.__get_saved_user_rating_form(request, city.id)
+
+#             if request.method == 'POST':
+#                 form = UserCityRateForm(request.POST)
+#                 city_handler.__rate_city(request, form, city.id)
+
+#             context = {"country": country, "city":city,"form": form}
+#             return render(request, "city.html", context) 
+#         except:
+#             return HttpResponseRedirect("/places/")
+
+#     @staticmethod
+#     def __get_saved_user_rating_form(request,cityId):
+#         if request.user.is_authenticated:
+#             try:
+#                 rate_value = UserCityRate.objects.get(user_id = request.user.id, city_id = cityId).rate
+#                 user_rating = {"rate":rate_value}
+#             except :
+#                 user_rating = None
+#             finally:            
+#                 return UserCityRateForm(user_rating)
+#         else:
+#             return None
+
+#     @staticmethod
+#     def __rate_city(request,form, cityId):
+#         if form.is_valid():
+#             rate = form.cleaned_data.get('rate')
+#             try:
+#                 UserCityRate.objects.create(user_id = request.user.id, city_id = cityId, rate = rate)
+#             except:
+#                 UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
+
+# def city_page(request, countryName, cityName):
+#     return city_handler.handle_request(request, countryName, cityName)
+    # try:
+    #     country = Country.objects.get(country_Name = countryName)
+    #     city    = City.objects.get(city_Name = cityName, country_Name_id = country.id)
+
+    #     if request.user.is_authenticated:
+    #         try:
+    #             rate_value = UserCityRate.objects.get(user_id = request.user.id, city_id = (city.id)).rate
+    #             form_data = {"rate":rate_value}
+    #         except :
+    #             pass
+    #         form_data = handle_city_rate(request, city.id) or form_data
+    #         form = UserCityRateForm(form_data)
+    #         context = {"country": country, "city":city,"form":form}
+    #     else:
+    #         context = {"country": country, "city":city}
+
+    #     return render(request, "city.html", context)
+    
+    # except:  # country or city is not valid
+    #     return HttpResponseRedirect("/places/")
