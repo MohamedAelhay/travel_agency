@@ -70,7 +70,8 @@ class UserHotelReservation(models.Model):
     user_Name = models.ForeignKey(CustomUser)
     rooms = models.IntegerField()
     room_type = models.IntegerField(choices=[(1, "Single"), (2, "Double"), (3, "Triple")])
-    res_Date = models.DateTimeField(default=datetime.now)
+    from_Date = models.DateTimeField(default=datetime.now)
+    to_Date = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return "Hotel Reservation"

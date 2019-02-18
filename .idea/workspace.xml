@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="483f99f2-66ff-4ea5-901b-dfe24de55d75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/places/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0008_usercityrate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0009_auto_20190216_1533.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0010_auto_20190216_1657.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0011_auto_20190216_1701.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0012_auto_20190216_1724.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0013_auto_20190216_1749.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0014_auto_20190216_1751.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0015_usercarrent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0016_auto_20190216_1953.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0017_auto_20190216_1955.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/migrations/0018_merge_20190217_1608.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/templates/country.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/places/templates/rate.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/avatar/avatar2_OArLbej.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/cities/avatar2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/countries/avatar2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/places/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/places/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/places/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/places/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/places/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/places/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/places/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/places/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/travel_agency/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/travel_agency/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/travel_agency/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/travel_agency/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,16 +13,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.41584158">
+    <splitter split-orientation="horizontal" split-proportion="0.5524944">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.44843048">
+        <splitter split-orientation="horizontal" split-proportion="0.6950067">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/places/forms.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="332">
-                      <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+                    <state relative-caret-position="373">
+                      <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
                       <folding>
                         <element signature="e#0#24#0" expanded="true" />
                       </folding>
@@ -58,12 +35,12 @@
           <split-second>
             <splitter split-orientation="vertical" split-proportion="0.6452206">
               <split-first>
-                <leaf>
+                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/places/views.py">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="2">
-                          <caret line="133" column="24" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
+                        <state relative-caret-position="150">
+                          <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
                           <folding>
                             <element signature="e#0#35#0" expanded="true" />
                           </folding>
@@ -74,12 +51,12 @@
                 </leaf>
               </split-first>
               <split-second>
-                <leaf>
+                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/places/urls.py">
                       <provider selected="true" editor-type-id="text-editor">
                         <state>
-                          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+                          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
                           <folding>
                             <element signature="e#0#32#0" expanded="true" />
                           </folding>
@@ -94,24 +71,15 @@
         </splitter>
       </split-first>
       <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/places/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="52">
-                  <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+                <state relative-caret-position="90">
+                  <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/places/migrations/0019_auto_20190217_2055.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -148,10 +116,10 @@
         <option value="$PROJECT_DIR$/places/templates/rentCar.html" />
         <option value="$PROJECT_DIR$/places/templates/hotelReservation.html" />
         <option value="$PROJECT_DIR$/places/urls.py" />
-        <option value="$PROJECT_DIR$/places/views.py" />
-        <option value="$PROJECT_DIR$/places/forms.py" />
-        <option value="$PROJECT_DIR$/places/models.py" />
         <option value="$PROJECT_DIR$/places/migrations/0019_auto_20190217_2055.py" />
+        <option value="$PROJECT_DIR$/places/views.py" />
+        <option value="$PROJECT_DIR$/places/models.py" />
+        <option value="$PROJECT_DIR$/places/forms.py" />
       </list>
     </option>
   </component>
@@ -172,17 +140,6 @@
             <path>
               <item name="travel_agency" type="b2602c69:ProjectViewProjectNode" />
               <item name="travel_agency" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="travel_agency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="travel_agency" type="462c0819:PsiDirectoryNode" />
-              <item name="places" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="travel_agency" type="b2602c69:ProjectViewProjectNode" />
-              <item name="travel_agency" type="462c0819:PsiDirectoryNode" />
-              <item name="places" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,8 +186,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="680" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3231571" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16902457" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -241,7 +199,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290441" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290441" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.075367644" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.40441176" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3290441" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.6066176" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -408,10 +366,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/places/migrations/0021_auto_20190217_2251.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/places/migrations/0019_auto_20190217_2055.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/places/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -420,41 +388,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/places/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="133" column="24" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
+        <state relative-caret-position="150">
+          <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/places/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/places/migrations/0021_auto_20190217_2251.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/places/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="90">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/places/migrations/0019_auto_20190217_2055.py">
+    <entry file="file://$PROJECT_DIR$/places/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        <state relative-caret-position="373">
+          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

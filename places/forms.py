@@ -21,9 +21,10 @@ class UserCarRentForm(forms.ModelForm):
 
 
 class HotelReservationForm(forms.ModelForm):
-    res_Date = forms.DateField(widget=forms.SelectDateWidget)
+    from_Date = forms.DateField(widget=forms.SelectDateWidget)
+    to_Date = forms.DateField(widget=forms.SelectDateWidget)
 
     class Meta:
         model = UserHotelReservation
-        fields = ['hotel_Name', 'rooms', 'room_type', 'res_Date']
+        fields = ['hotel_Name', 'rooms', 'room_type', 'to_Date', 'from_Date']
 
