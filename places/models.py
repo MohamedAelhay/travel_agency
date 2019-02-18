@@ -110,13 +110,3 @@ class UserCarRent(models.Model):
         return self.time
 
 
-
-
-
-
-
-
-
-
-
-

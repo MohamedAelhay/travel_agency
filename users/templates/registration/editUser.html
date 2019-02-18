@@ -1,0 +1,12 @@
+<html>
+<body>
+	{%block body_block%}
+<form method ="POST">
+        {%csrf_token%}
+{{user_form.as_p}}
+<button type="submit" >save</button>
+</form>
+{%endblock%}
+
+    </body>
+</html>

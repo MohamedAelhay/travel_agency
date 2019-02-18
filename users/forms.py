@@ -6,6 +6,7 @@ from .models import CustomUser
 class UserSignUpForm(forms.ModelForm):
     password = forms.CharField(widget = forms.PasswordInput)
     username = forms.CharField(widget = forms.TextInput)
+    avatar=forms.ImageField(widget=forms.FileInput)
 
     class Meta:
         model = CustomUser
@@ -19,7 +20,10 @@ class UserloginForm(forms.Form):
     class Meta:
         fields = ['username', 'password']
 
-
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['avatar','username', 'email']
 
 
 

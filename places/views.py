@@ -113,7 +113,8 @@ def rentCar(request):
     else:
         form = UserCarRentForm()
         context = {"form": form}
-        return render(request, "rate.html", context)       
+        return render(request, "rate.html", context)
+
 
 # def newCountry(request):
 #     if request.method == 'POST':
