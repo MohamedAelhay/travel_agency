@@ -88,15 +88,15 @@ class CityHotel(models.Model):
 class UserCityRate(models.Model):
     user = models.ForeignKey(CustomUser)
     city = models.ForeignKey(City)
-    rate    = models.IntegerField(
-        default = 0,
-        choices = (
+    rate = models.IntegerField(
+        default=0,
+        choices=(
             (0, '---'),
             (1, 'Bad'),
             (2, 'Below Average'),
             (3, 'Average'),
             (4, 'Very Good'),
-            (5, 'Excelent'),
+            (5, 'Excellent'),
         )
     )
 
@@ -108,10 +108,10 @@ class UserCityRate(models.Model):
 
 
 class UserCarRent(models.Model):
-    pickup_loc   = models.ForeignKey(Location, related_name = 'pickup_loc')
-    dropoff_loc  = models.ForeignKey(Location, related_name = 'dropoff_loc')
-    user     = models.ForeignKey(CustomUser)
-    time     = models.DateTimeField(default = datetime.now)
+    pickup_loc  = models.ForeignKey(Location, related_name = 'pickup_loc')
+    dropoff_loc = models.ForeignKey(Location, related_name = 'dropoff_loc')
+    user        = models.ForeignKey(CustomUser)
+    time        = models.DateTimeField(default = datetime.now)
     
     def __str__(self):
         return self.time

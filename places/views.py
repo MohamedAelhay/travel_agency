@@ -122,10 +122,9 @@ def getUserCityRate(request, cityId):
 
 
 def getUserCarRentals(request, cityId):
-    UserCityRatentals = UserCarRent.objects.filter(user_id = request.user.id)
-    context = {"rentals": UserCityRatentals}
+    userCityRatentals = UserCarRent.objects.filter(user_id = request.user.id)
+    context = {"rentals": userCityRatentals}
     return context
-
 
 
 # def handle_city_rate(request, cityId):
@@ -175,7 +174,8 @@ def hotelReservation(request):
                 hotel_Name=request.POST.get('hotel_Name'),
                 rooms     =request.POST.get('rooms'),
                 room_type =request.POST.get('room_type'),
-                res_Date  =request.POST.get('res_Time')
+                to_Date  =request.POST.get('to_Date'),
+                from_Date=request.POST.get('from_Date')
             )
             return HttpResponseRedirect('/places/')
     else:
