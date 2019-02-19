@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Country, City, Location, Hotel, CityHotel, UserCityRate, UserCarRent, UserHotelReservation
@@ -68,7 +69,6 @@ class city_handler:
                 UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
 
 
-
 # Country Methods :-
 def getAllCountries():
     countries = Country.objects.all()
@@ -121,6 +121,7 @@ def getUserCityRate(request, cityId):
     return context
 
 
+@login_required
 def getUserCarRentals(request, cityId):
     userCityRatentals = UserCarRent.objects.filter(user_id = request.user.id)
     context = {"rentals": userCityRatentals}
@@ -163,6 +164,7 @@ def rentCar(request):
         form = UserCarRentForm()
         context = {"form": form}
         return render(request, "rentCar.html", context)
+
 
 
 def hotelReservation(request):
