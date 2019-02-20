@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="483f99f2-66ff-4ea5-901b-dfe24de55d75" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/places/templates/Header.html" beforeDir="false" afterPath="$PROJECT_DIR$/places/templates/Header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/places/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/places/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/travel_agency/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/travel_agency/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/travel_agency/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/travel_agency/urls.py" afterDir="false" />
-    </list>
+    <list default="true" id="483f99f2-66ff-4ea5-901b-dfe24de55d75" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/places/templates/homepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+            <state relative-caret-position="105">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -199,9 +194,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="680" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17274758" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17274758" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -212,7 +206,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290441" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290441" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.64259124" weight="0.25735295" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.64259124" visible="true" weight="0.7040441" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.3574088" side_tool="true" weight="0.1672794" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.6066176" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -515,8 +509,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/places/templates/homepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

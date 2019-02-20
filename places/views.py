@@ -4,9 +4,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Country, City, Location, Hotel, CityHotel, UserCityRate, UserCarRent, UserHotelReservation
 from .forms import UserCityRateForm, UserCarRentForm, HotelReservationForm
 from pprint import *
+from .utils.crawler import Gretty_Image_Crawler, Yahoo_Image_Crawler
 
 # Create your views here.
-
 
 # index Test :-
 def index(request):
@@ -44,7 +44,10 @@ class city_handler:
                 city_handler.__rate_city(request, form, city.id)
 
             context = {"country": country, "city": city, "form": form}
-            return render(request, "city.html", context) 
+            cr = Gretty_Image_Crawler(cityName)
+            city_img_url = cr.get_random_url()
+            context = {"country": country, "city":city,"city_img_url":city_img_url,"form": form}
+            return render(request, "city.html", context)
         except:
             return HttpResponseRedirect("/places/")
 

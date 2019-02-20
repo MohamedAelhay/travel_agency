@@ -5,7 +5,7 @@
 </head>
 <body> 
         <p> {{ city.city_Name }}</p>
-        <img src="/media/{{ city.city_Pic }}">
+        <img src="{{ city_img_url }}">
 
         {% if request.user.is_authenticated %}
         <h2>rating</h2>
