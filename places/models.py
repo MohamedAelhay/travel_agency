@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import CustomUser
-from datetime import datetime    
+from datetime import datetime
 
 # Create your models here.
 
@@ -102,17 +102,17 @@ class UserCityRate(models.Model):
 
     class Meta:
         unique_together = (('user', 'city'),)
-    
+
     def __str__(self):
         return self.rate
 
 
 class UserCarRent(models.Model):
-    pickup_loc  = models.ForeignKey(Location, related_name = 'pickup_loc')
-    dropoff_loc = models.ForeignKey(Location, related_name = 'dropoff_loc')
+    pickup_loc  = models.ForeignKey(Location, related_name='pickup_loc')
+    dropoff_loc = models.ForeignKey(Location, related_name='dropoff_loc')
     user        = models.ForeignKey(CustomUser)
-    time        = models.DateTimeField(default = datetime.now)
-    
+    time        = models.DateTimeField(default=datetime.now)
+
     def __str__(self):
         return self.time
 
