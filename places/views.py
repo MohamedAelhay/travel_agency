@@ -128,6 +128,19 @@ def getUserCarRentals(request, cityId):
     return context
 
 
+def showUserReservations(request):    
+    reservations=UserHotelReservation.objects.get(user_Name=request.user.id) 
+    rents=showUserRentals(request)     
+    context={"reservations":reservations,"rents":rents}    
+    return render(request,'registration/single.html', context)
+    
+
+def showUserRentals(request):
+    rents=UserCarRent.objects.get(user=request.user.id)
+    return rents
+
+
+
 # def handle_city_rate(request, cityId):
 #     form_data = request.POST or None
 #     form      = UserCityRateForm(form_data)
