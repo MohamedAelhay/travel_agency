@@ -79,7 +79,7 @@ def getAllCountries():
 def getAllCities(request):
     cities = City.objects.all()
     context = {"cities": cities}
-    return render(request, "citiesPage.html", context)
+    return render(request, "cityPage.html", context)
 
 
 def getCityById(request, cityId):

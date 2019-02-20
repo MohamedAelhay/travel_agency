@@ -10,7 +10,7 @@ from .models import Country, City, Location, Hotel, CityHotel
 class CustomCountry(admin.ModelAdmin):
     fieldsets = [
         ['Country Info', {'fields': ['country_Name', 'country_Pic']}],
-        # ['Cities', {'fields': ['country_Name']}]
+        ['Cities', {'fields': ['country_Name']}]
     ]
     list_display = ['country_Name', 'image_tag']
     list_filter = ['country_Name']
