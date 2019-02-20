@@ -11,8 +11,8 @@ from pprint import *
 # index Test :-
 def index(request):
     countries = getAllCountries()
-    context = {"countries": countries }
-    return render(request, "index.html", context)
+    context = {"countries": countries}
+    return render(request, "homepage.html", context)
 
 
 def country_page(request, countryName):
@@ -24,12 +24,14 @@ def country_page(request, countryName):
     except:
         return HttpResponseRedirect("/places/")
 
+
 def city_page(request, countryName, cityName):
     return city_handler.handle_request(request, countryName, cityName)
 
+
 class city_handler:
     @staticmethod
-    def handle_request(request, countryName,cityName):
+    def handle_request(request, countryName, cityName):
         try:
             country = Country.objects.get(country_Name = countryName)
             city    = City.objects.get(city_Name = cityName, country_Name_id = country.id)
@@ -41,17 +43,17 @@ class city_handler:
                 form = UserCityRateForm(request.POST)
                 city_handler.__rate_city(request, form, city.id)
 
-            context = {"country": country, "city":city,"form": form}
+            context = {"country": country, "city": city, "form": form}
             return render(request, "city.html", context) 
         except:
             return HttpResponseRedirect("/places/")
 
     @staticmethod
-    def __get_saved_user_rating_form(request,cityId):
+    def __get_saved_user_rating_form(request, cityId):
         if request.user.is_authenticated:
             try:
                 rate_value = UserCityRate.objects.get(user_id = request.user.id, city_id = cityId).rate
-                user_rating = {"rate":rate_value}
+                user_rating = {"rate": rate_value}
             except :
                 user_rating = None
             finally:            
@@ -60,7 +62,7 @@ class city_handler:
             return None
 
     @staticmethod
-    def __rate_city(request,form, cityId):
+    def __rate_city(request, form, cityId):
         if form.is_valid():
             rate = form.cleaned_data.get('rate')
             try:
@@ -154,7 +156,6 @@ def showUserRentals(request):
 #                 UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
 #         else:
 #             form_data = None
-    
 #     return form_data
 
 
@@ -177,7 +178,6 @@ def rentCar(request):
         form = UserCarRentForm()
         context = {"form": form}
         return render(request, "rentCar.html", context)
-
 
 
 def hotelReservation(request):
