@@ -7,7 +7,7 @@ from datetime import datetime
 
 class Country(models.Model):
     country_Name = models.CharField(max_length=100)
-    country_Pic = models.ImageField(upload_to='countries', max_length=250)
+    country_Pic = models.ImageField(upload_to='countries', max_length=250,null=True, blank=True)
 
     def __str__(self):
         return self.country_Name
@@ -24,8 +24,8 @@ class Country(models.Model):
 
 class City(models.Model):
     city_Name = models.CharField(max_length=100)
-    city_Description = models.CharField(max_length=1000)
-    city_Pic = models.ImageField(upload_to='cities', max_length=250)
+    city_Description = models.CharField(max_length=1000,null=True, blank=True)
+    city_Pic = models.ImageField(upload_to='cities', max_length=250,null=True, blank=True)
     country_Name = models.ForeignKey(Country)
 
     def __str__(self):

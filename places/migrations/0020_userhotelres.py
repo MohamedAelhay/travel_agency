@@ -23,8 +23,6 @@ class Migration(migrations.Migration):
                 ('dateFrom', models.DateTimeField(default=datetime.datetime.now)),
                 ('datetTo', models.DateTimeField(default=datetime.datetime.now)),
                 ('hotel', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='places.Hotel')),
-                ('room_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='userhotelres_room_type', to='places.Room')),
-                ('rooms', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='userhotelres_rooms', to='places.Room')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
