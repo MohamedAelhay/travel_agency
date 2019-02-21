@@ -1,3 +1,5 @@
+from array import array
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -9,9 +11,11 @@ from .utils.crawler import Gretty_Image_Crawler, Yahoo_Image_Crawler
 # Create your views here.
 
 # index Test :-
+
+
 def index(request):
     countries = getAllCountries()
-    context = {"countries": countries }
+    context = {"countries": countries}
     return render(request, "index.html", context)
 
 
@@ -24,12 +28,14 @@ def country_page(request, countryName):
     except:
         return HttpResponseRedirect("/places/")
 
+
 def city_page(request, countryName, cityName):
     return city_handler.handle_request(request, countryName, cityName)
 
+
 class city_handler:
     @staticmethod
-    def handle_request(request, countryName,cityName):
+    def handle_request(request, countryName, cityName):
         try:
             country = Country.objects.get(country_Name = countryName)
             city    = City.objects.get(city_Name = cityName, country_Name_id = country.id)
@@ -41,6 +47,7 @@ class city_handler:
                 form = UserCityRateForm(request.POST)
                 city_handler.__rate_city(request, form, city.id)
 
+            context = {"country": country, "city": city, "form": form}
             cr = Gretty_Image_Crawler(cityName)
             city_img_url = cr.get_random_url()
             description = cr.get_city_description()
@@ -57,11 +64,11 @@ class city_handler:
             return HttpResponseRedirect("/places/")
 
     @staticmethod
-    def __get_saved_user_rating_form(request,cityId):
+    def __get_saved_user_rating_form(request, cityId):
         if request.user.is_authenticated:
             try:
                 rate_value = UserCityRate.objects.get(user_id = request.user.id, city_id = cityId).rate
-                user_rating = {"rate":rate_value}
+                user_rating = {"rate": rate_value}
             except :
                 user_rating = None
             finally:            
@@ -70,7 +77,7 @@ class city_handler:
             return None
 
     @staticmethod
-    def __rate_city(request,form, cityId):
+    def __rate_city(request, form, cityId):
         if form.is_valid():
             rate = form.cleaned_data.get('rate')
             try:
@@ -81,8 +88,31 @@ class city_handler:
 
 # Country Methods :-
 def getAllCountries():
-    countries = Country.objects.all()
+    countries = Country.objects.all()[:30]
     return countries
+
+
+def homePage(request):
+    countries = getAllCountries()
+    # top_locations = UserCityRate.objects.filter(rate=5).values_list('city', flat=True)[:6]
+    # top_cities = City.objects.filter(id__in=top_locations)
+    top_cities = UserCityRate.objects.filter(rate=5)[:3]
+    city_image = []
+    country_image = []
+    for city in top_cities:
+        city_cr = Gretty_Image_Crawler(city.city.city_Name)
+        country_cr = Gretty_Image_Crawler(city.city.country_Name.country_Name)
+        city_img_url = city_cr.get_random_url()
+        country_img_url = country_cr.get_random_url()
+        city_image.append(city_img_url)
+        country_image.append(country_img_url)
+        # city.image = city_img_url
+        # print(city.image)
+
+    city_zip = zip(city_image, top_cities)
+    country_zip = zip(country_image, top_cities)
+    context = {"countries": countries, "image_countries": country_zip, "image_cities": city_zip}
+    return render(request, 'homepage.html', context)
 
 
 # City Methods :-
@@ -137,13 +167,14 @@ def getUserCarRentals(request, cityId):
     context = {"rentals": userCityRatentals}
     return context
 
-
-def showUserReservations(request):    
-    reservations=UserHotelReservation.objects.get(user_Name=request.user.id) 
-    rents=showUserRentals(request)     
-    context={"reservations":reservations,"rents":rents}    
-    return render(request,'registration/single.html', context)
-    
+def showUserReservations(request):   
+    try:
+        reservations=UserHotelReservation.objects.get(user_Name=request.user.id) 
+        rents=showUserRentals(request)     
+        context={"reservations":reservations,"rents":rents}    
+    except:
+        context={"reservations":[],"rents":[]}
+    return render(request,'single.html', context)
 
 def showUserRentals(request):
     rents=UserCarRent.objects.get(user=request.user.id)
@@ -164,7 +195,6 @@ def showUserRentals(request):
 #                 UserCityRate.objects.filter(user_id = request.user.id, city_id = cityId ).update(rate = rate)
 #         else:
 #             form_data = None
-    
 #     return form_data
 
 
@@ -187,7 +217,6 @@ def rentCar(request):
         form = UserCarRentForm()
         context = {"form": form}
         return render(request, "rentCar.html", context)
-
 
 
 def hotelReservation(request):
