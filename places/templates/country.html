@@ -13,7 +13,7 @@
 
             <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
               <h1 class="text-white font-weight-light">{{country.country_Name}}</h1>
-              <div><a href="index.html">Home</a> <span class="mx-2 text-white">&bullet;</span> <span class="text-white">{{country.country_Name}}</span></div>
+              <div><a href="\">Home</a> <span class="mx-2 text-white">&bullet;</span> <span class="text-white">{{country.country_Name}}</span></div>
 
             </div>
           </div>
@@ -27,10 +27,9 @@
           <div class="col-md-7 mb-5">
               <ul>
                   {% for city in cities %}
-                    <li><a href="">{{city.city_Name}}</a></li>
+                    <li><a href="/country/{{country.country_Name}}/city/{{city.city_Name}}">{{city.city_Name}}</a></li>
                   {% endfor %}
               </ul>
-
           </div>
         </div>
       </div>

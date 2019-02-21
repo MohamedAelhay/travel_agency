@@ -4,7 +4,7 @@ from places import views
 urlpatterns = [
     # Country Urls:-
     url(r'^country/(?P<countryName>[a-zA-Z ]+)/$', views.country_page),
-    url(r'^(?P<countryName>[a-zA-Z ]+)/(?P<cityName>[a-zA-Z ]+)/$', views.city_page),
+    url(r'^country/(?P<countryName>[a-zA-Z ]+)/city/(?P<cityName>[a-zA-Z ]+)/$', views.city_page),
     # url(r'^(?P<countryId>[0-9]+)/$', views.getCountryById),
     # City Urls:-
     url(r'^cities/[0-9]/rentCar/$', views.rentCar),
