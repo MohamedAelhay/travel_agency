@@ -1,5 +1,4 @@
 from array import array
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -13,6 +12,11 @@ from .utils.crawler import Gretty_Image_Crawler, Yahoo_Image_Crawler
 # index Test :-
 
 
+def getAllCountries():
+    countries = Country.objects.all()[:30]
+    return countries
+
+
 def index(request):
     countries = getAllCountries()
     context = {"countries": countries}
@@ -21,12 +25,13 @@ def index(request):
 
 def country_page(request, countryName):
     # try:
+        countries = getAllCountries()
         country = Country.objects.get(country_Name=countryName)
         cities  = City.objects.filter(country_Name_id=country.id)
         country_cr = Gretty_Image_Crawler(country.country_Name)
         country_img_url = country_cr.get_random_url()
         country.image = country_img_url
-        context = {"country": country, "cities": cities}
+        context = {"country": country, "cities": cities, "countries": countries}
         return render(request, "country.html", context)
     # except:
     #     return HttpResponseRedirect("/places/")
@@ -53,8 +58,16 @@ class city_handler:
             context = {"country": country, "city": city, "form": form}
             cr = Gretty_Image_Crawler(cityName)
             city_img_url = cr.get_random_url()
-            context = {"country": country, "city": city, "city_img_url": city_img_url, "form": form}
-            return render(request, "city.html", context)
+            description = cr.get_city_description()
+            
+            context = {
+                "country": country, 
+                "city":city,
+                "city_img_url":city_img_url,
+                "description":description,
+                "form": form
+            }
+            return render(request, "city.html", context) 
         except:
             return HttpResponseRedirect("/places/")
 
@@ -82,9 +95,6 @@ class city_handler:
 
 
 # Country Methods :-
-def getAllCountries():
-    countries = Country.objects.all()[:30]
-    return countries
 
 
 def homePage(request):
@@ -163,12 +173,15 @@ def getUserCarRentals(request, cityId):
     return context
 
 
-def showUserReservations(request):    
-    reservations=UserHotelReservation.objects.get(user_Name=request.user.id) 
-    rents=showUserRentals(request)     
-    context={"reservations":reservations,"rents":rents}    
-    return render(request,'registration/single.html', context)
-    
+def showUserReservations(request):   
+    try:
+        reservations=UserHotelReservation.objects.get(user_Name=request.user.id) 
+        rents=showUserRentals(request)     
+        context={"reservations":reservations,"rents":rents}    
+    except:
+        context={"reservations":[],"rents":[]}
+    return render(request,'single.html', context)
+
 
 def showUserRentals(request):
     rents=UserCarRent.objects.get(user=request.user.id)

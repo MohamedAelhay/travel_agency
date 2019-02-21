@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^rentcar/$', views.rentCar),
     url(r'^hotelres/$', views.hotelReservation),
     url(r'^user/$', views.showUserReservations),
+
     url(r'^$', views.homePage),
 
 ]

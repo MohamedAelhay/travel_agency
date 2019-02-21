@@ -19,13 +19,12 @@
                   <a href="destination.html">Destinations</a>
                   <ul class="dropdown">
                     {% for country in countries %}
-                    <li><a href="country/{{country.country_Name}}/">{{country.country_Name}}</a></li>
+                    <li><a href="/country/{{country.country_Name}}/">{{country.country_Name}}</a></li>
                     {% endfor %}
                   </ul>
                 </li>
-
                 <li><a href="login.html">Profile</a></li>
-                <li><a href="signup.html">Log out</a></li>
+                <li><a href="/users/logout">Log out</a></li>
               </ul>
             </nav>
           </div>
