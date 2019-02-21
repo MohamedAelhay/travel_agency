@@ -32,7 +32,6 @@ def country_page(request, countryName):
     #     return HttpResponseRedirect("/places/")
 
 
-
 def city_page(request, countryName, cityName):
     return city_handler.handle_request(request, countryName, cityName)
 
