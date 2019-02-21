@@ -23,9 +23,9 @@ from django.conf import settings
 
 urlpatterns: List[Union[RegexURLResolver, RegexURLPattern]] = [
     url(r'^admin/', admin.site.urls),
-    url(r'^users/', include('users.urls')),
-    url(r'^places/', include('places.urls')),
     url(r'^blog/', include('blog.urls')),
+    url(r'^users/', include('users.urls')),
+    url(r'^', include('places.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

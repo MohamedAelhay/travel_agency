@@ -104,7 +104,7 @@ class UserCityRate(models.Model):
         unique_together = (('user', 'city'),)
 
     def __str__(self):
-        return self.rate
+        return "Rate"
 
 
 class UserCarRent(models.Model):
