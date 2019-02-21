@@ -43,7 +43,15 @@ class city_handler:
 
             cr = Gretty_Image_Crawler(cityName)
             city_img_url = cr.get_random_url()
-            context = {"country": country, "city":city,"city_img_url":city_img_url,"form": form}
+            description = cr.get_city_description()
+            
+            context = {
+                "country": country, 
+                "city":city,
+                "city_img_url":city_img_url,
+                "description":description,
+                "form": form
+            }
             return render(request, "city.html", context) 
         except:
             return HttpResponseRedirect("/places/")
