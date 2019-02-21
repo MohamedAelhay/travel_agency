@@ -98,6 +98,8 @@ def homePage(request):
         country_img_url = country_cr.get_random_url()
         city_image.append(city_img_url)
         country_image.append(country_img_url)
+        # city.image = city_img_url
+        # print(city.image)
 
     city_zip = zip(city_image, top_cities)
     country_zip = zip(country_image, top_cities)

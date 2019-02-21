@@ -18,7 +18,7 @@ class CustomUserAdmin(admin.ModelAdmin):
         [
             "Permissions", 
             {
-                "fields": ['is_superuser', 'is_staff', 'is_active']
+                "fields": ['is_superuser', 'is_staff', 'is_active', 'groups']
             }
         ]
     )
