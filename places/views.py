@@ -20,13 +20,16 @@ def index(request):
 
 
 def country_page(request, countryName):
-    try:
+    # try:
         country = Country.objects.get(country_Name=countryName)
         cities  = City.objects.filter(country_Name_id=country.id)
+        country_cr = Gretty_Image_Crawler(country.country_Name)
+        country_img_url = country_cr.get_random_url()
+        country.image = country_img_url
         context = {"country": country, "cities": cities}
         return render(request, "country.html", context)
-    except:
-        return HttpResponseRedirect("/places/")
+    # except:
+    #     return HttpResponseRedirect("/places/")
 
 
 def city_page(request, countryName, cityName):

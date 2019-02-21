@@ -2,9 +2,8 @@ from django.conf.urls import url
 from places import views
 
 urlpatterns = [
-    url(r'^$', views.homePage),
     # Country Urls:-
-    url(r'^(?P<countryName>[a-zA-Z ]+)$', views.country_page),
+    url(r'^country/(?P<countryName>[a-zA-Z ]+)/$', views.country_page),
     url(r'^(?P<countryName>[a-zA-Z ]+)/(?P<cityName>[a-zA-Z ]+)/$', views.city_page),
     # url(r'^(?P<countryId>[0-9]+)/$', views.getCountryById),
     # City Urls:-
@@ -19,7 +18,8 @@ urlpatterns = [
     url(r'^(?P<hotelId>[0-9]+)/$', views.getHotelById),
     url(r'^rentcar/$', views.rentCar),
     url(r'^hotelres/$', views.hotelReservation),
-    url(r'^user/$', views.showUserReservations), 
+    url(r'^user/$', views.showUserReservations),
+    url(r'^$', views.homePage),
 
 ]
 
