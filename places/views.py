@@ -1,3 +1,5 @@
+from array import array
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -9,10 +11,12 @@ from .utils.crawler import Gretty_Image_Crawler, Yahoo_Image_Crawler
 # Create your views here.
 
 # index Test :-
+
+
 def index(request):
     countries = getAllCountries()
     context = {"countries": countries}
-    return render(request, "homepage.html", context)
+    return render(request, "index.html", context)
 
 
 def country_page(request, countryName):
@@ -46,7 +50,7 @@ class city_handler:
             context = {"country": country, "city": city, "form": form}
             cr = Gretty_Image_Crawler(cityName)
             city_img_url = cr.get_random_url()
-            context = {"country": country, "city":city,"city_img_url":city_img_url,"form": form}
+            context = {"country": country, "city": city, "city_img_url": city_img_url, "form": form}
             return render(request, "city.html", context)
         except:
             return HttpResponseRedirect("/places/")
@@ -76,8 +80,29 @@ class city_handler:
 
 # Country Methods :-
 def getAllCountries():
-    countries = Country.objects.all()
+    countries = Country.objects.all()[:30]
     return countries
+
+
+def homePage(request):
+    countries = getAllCountries()
+    # top_locations = UserCityRate.objects.filter(rate=5).values_list('city', flat=True)[:6]
+    # top_cities = City.objects.filter(id__in=top_locations)
+    top_cities = UserCityRate.objects.filter(rate=5)[:3]
+    city_image = []
+    country_image = []
+    for city in top_cities:
+        city_cr = Gretty_Image_Crawler(city.city.city_Name)
+        country_cr = Gretty_Image_Crawler(city.city.country_Name.country_Name)
+        city_img_url = city_cr.get_random_url()
+        country_img_url = country_cr.get_random_url()
+        city_image.append(city_img_url)
+        country_image.append(country_img_url)
+
+    city_zip = zip(city_image, top_cities)
+    country_zip = zip(country_image, top_cities)
+    context = {"countries": countries, "image_countries": country_zip, "image_cities": city_zip}
+    return render(request, 'homepage.html', context)
 
 
 # City Methods :-

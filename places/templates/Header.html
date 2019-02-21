@@ -1,5 +1,5 @@
 
-    {% if request.user.id %}
+    {% if request.user.is_authenticated %}
     <header class="site-navbar py-1" role="banner">
 
       <div class="container">
@@ -18,10 +18,9 @@
                 <li class="has-children">
                   <a href="destination.html">Destinations</a>
                   <ul class="dropdown">
-                    <li><a href="#">Japan</a></li>
-                    <li><a href="#">Europe</a></li>
-                    <li><a href="#">China</a></li>
-                    <li><a href="#">France</a></li>
+                    {% for country in countries %}
+                    <li><a href="#">{{country.country_Name}}</a></li>
+                    {% endfor %}
                   </ul>
                 </li>
 
@@ -79,10 +78,9 @@
                 <li class="has-children">
                   <a href="destination.html">Destinations</a>
                   <ul class="dropdown">
-                    <li><a href="#">Japan</a></li>
-                    <li><a href="#">Europe</a></li>
-                    <li><a href="#">China</a></li>
-                    <li><a href="#">France</a></li>
+                    {% for country in countries %}
+                    <li><a href="#">{{country.country_Name}}</a></li>
+                    {% endfor %}
                   </ul>
                 </li>
 

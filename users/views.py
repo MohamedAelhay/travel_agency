@@ -63,10 +63,10 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/users/')
+    return redirect('')
 
 
-def getUserById(request,userId):
+def getUserById(request, userId):
     user=CustomUser.objects.get(id=eval(userId))
     context={"user":user}
     return render(request,"registration/single.html",context)

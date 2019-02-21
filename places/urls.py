@@ -2,7 +2,7 @@ from django.conf.urls import url
 from places import views
 
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.homePage),
     # Country Urls:-
     url(r'^(?P<countryName>[a-zA-Z ]+)$', views.country_page),
     url(r'^(?P<countryName>[a-zA-Z ]+)/(?P<cityName>[a-zA-Z ]+)/$', views.city_page),

@@ -4,6 +4,7 @@ import urllib.request
 import random
 import re
 
+
 class Image_Crawler(ABC):
     def __init__(self):
         self.urls = []
@@ -11,7 +12,7 @@ class Image_Crawler(ABC):
     def crawl_page(self, url):
         with urllib.request.urlopen(url) as response:
             html = response.read()
-            return BeautifulSoup(html,'html.parser')
+            return BeautifulSoup(html, 'html.parser')
 
     @abstractmethod
     def search(self, keyword):
@@ -19,7 +20,7 @@ class Image_Crawler(ABC):
     
     def get_random_url(self):
         if len(self.urls)>10:
-            return self.urls[0 : 10 ][random.randint(0, 9)]
+            return self.urls[0: 10][random.randint(0, 9)]
         elif(len(self.urls)>10):
             return self.urls[0]
         else:
@@ -39,6 +40,7 @@ class Gretty_Image_Crawler(Image_Crawler):
 
     def search(self, keyword):
         self.urls = []
+        keyword = keyword.replace(" ", "%20")
         url      = "https://www.gettyimages.com/photos/"+ keyword +"?alloweduse=availableforalluses&family=creative&license=rf&phrase=" + keyword + "&sort=best#license"
         crawler  = self.crawl_page(url)
         img_tags = crawler.findAll("a", {"class","search-result-asset-link"})
@@ -47,6 +49,7 @@ class Gretty_Image_Crawler(Image_Crawler):
             self.urls.append("https://media.gettyimages.com/photos/picture-id" + id)
 
         return self.urls
+
 
 class Yahoo_Image_Crawler(Image_Crawler):
     def __init__(self, keyword):
@@ -64,3 +67,4 @@ class Yahoo_Image_Crawler(Image_Crawler):
             img_url = re.search(r'imgurl=(.*?)&rurl', href).group(1)
             img_url = img_url.replace("%2F", "/")
             self.urls.append(img_url)
+
