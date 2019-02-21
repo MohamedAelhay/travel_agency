@@ -10,7 +10,7 @@ class UserSignUpForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['avatar','username', 'password','email']
+        fields = ['avatar', 'username', 'password', 'email']
 
 
 class UserloginForm(forms.Form):
@@ -20,10 +20,11 @@ class UserloginForm(forms.Form):
     class Meta:
         fields = ['username', 'password']
 
+
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['avatar','username', 'email']
+        fields = ['avatar', 'username', 'email']
 
 
 
