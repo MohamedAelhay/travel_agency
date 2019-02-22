@@ -7,6 +7,7 @@ from django.forms import SplitDateTimeField
 
 
 class UserCityRateForm(forms.ModelForm):
+    # rate = forms.ChoiceField(attrs={"class":"btn btn-primary py-3 px-5 text-white"})
     class Meta:
         model = UserCityRate
         fields = ['rate']
