@@ -30,7 +30,7 @@
         <div class="row">
             {% for image, top_city in image_countries %}
             <div class="col-md-6 col-lg-4 mb-4">
-            <a href="#" class="unit-1 text-center">
+            <a href="/country/{{top_city.city.country_Name}}/" class="unit-1 text-center">
               <img src="{{ image }}" alt="Image" class="img-fluid">
               <div class="unit-1-text">
                 <h3 class="unit-1-heading">{{top_city.city.country_Name}}</h3>
@@ -62,9 +62,9 @@
                   <img src="{{image}}" alt="Image" class="img-md-fluid">
                 </div>
                 <div class="overlap-left col-lg-6 bg-white p-md-5 align-self-center">
-                    <h4>{{city.city}}</h4>
+                    <a href="/country/{{city.city.country_Name}}/city/{{city.city}}">{{city.city}}</a>
                   <p class="text-black lead">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique dolorem quisquam laudantium, incidunt id laborum, tempora aliquid labore minus. Nemo maxime, veniam! Fugiat odio nam eveniet ipsam atque, corrupti porro&rdquo;</p>
-                  <p class="">&mdash; <em>M.Abdelhay</em>, <a href="#">Traveler</a></p>
+                  <p class="">&mdash; <em>MHA Team</em>, <a>Traveler</a></p>
                 </div>
               </div>
             </div>
