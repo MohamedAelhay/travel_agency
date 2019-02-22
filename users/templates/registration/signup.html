@@ -1,51 +1,112 @@
-<h2>sign up</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="fieldWrapper">
-            <div>
-                {{ form.avatar.errors.as_text  }}
+{%extends 'Base.html'%}
+          {% load static %}
+          {%block title_block%}
+          <title>Sign Up</title>
+          {%endblock%}
+
+      {% block main_block %}
+
+    <!--Header place-->
+
+    <div class="site-blocks-cover inner-page-cover" style="background-image: url({% static 'images/hero_bg_2.jpg' %});" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center text-center">
+
+            <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
+              <h1 class="text-white font-weight-light">Be One of Us</h1>
+              <div><a href="index.html">Home</a> <span class="mx-2 text-white">&bullet;</span> <span class="text-white">Sign Up</span></div>
+              
             </div>
-            <div>
-                {{ form.avatar.label_tag }}
-            </div>
-            <div>
-                {{ form.avatar }}
-            </div>
+          </div>
         </div>
-    <div class="fieldWrapper">
-            <div>
-                {{ form.username.errors.as_text  }}
-            </div>
-            <div>
-                {{ form.username.label_tag }}
-            </div>
-            <div>
-                {{ form.username }}
-            </div>
-        </div>
+      </div>  
+
+
     
-        <div class="fieldWrapper">
-            <div>
-                {{ form.email.errors.as_text  }}
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 mb-5">
+
+              <center>
+                  <h2>sign up</h2>
+          <form method="post" enctype="multipart/form-data" style="margin:0">
+              {% csrf_token %}
+              <div class="fieldWrapper">
+                      <div>
+                          {{ form.username.errors.as_text  }}
+                      </div>
+                      <div>
+                          {{ form.username.label_tag }}
+                      </div>
+                      <div>
+                          {{ form.username }}
+                      </div>
+                  </div>
+              
+                  <div class="fieldWrapper">
+                      <div>
+                          {{ form.email.errors.as_text  }}
+                      </div>
+                      <div>
+                          {{ form.email.label_tag }}
+                      </div>
+                      <div>
+                          {{ form.email }}
+                      </div>
+                  </div>
+              
+                  <div class="fieldWrapper">
+                      <div>
+                          {{ form.password.errors.as_text  }}
+                      </div>
+                      <div>
+                          {{ form.password.label_tag }}
+                      </div>
+                      <div>
+                          {{ form.password }}
+                      </div>
+                  </div>
+
+                  <div class="fieldWrapper">
+                          <div>
+                              {{ form.avatar.errors.as_text  }}
+                          </div>
+                          <div>
+                              {{ form.avatar.label_tag }}
+                          </div>
+                          <div>
+                              {{ form.avatar }}
+                          </div>
+                  </div>
+          <button type="submit">Upload</button>
+          </form>
+          </center>
+          
+          </div>
+          <div class="col-md-5">
+            
+            <div class="p-4 mb-3 bg-white">
+              <p class="mb-0 font-weight-bold">Address</p>
+              <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+
+              <p class="mb-0 font-weight-bold">Phone</p>
+              <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+
+              <p class="mb-0 font-weight-bold">Email Address</p>
+              <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+
             </div>
-            <div>
-                {{ form.email.label_tag }}
+
+            <div class="p-4 mb-3 bg-white">
+              <img src="images/hero_bg_1.jpg" alt="Image" class="img-fluid mb-4 rounded">
+
             </div>
-            <div>
-                {{ form.email }}
-            </div>
+
+          </div>
         </div>
-    
-        <div class="fieldWrapper">
-            <div>
-                {{ form.password.errors.as_text  }}
-            </div>
-            <div>
-                {{ form.password.label_tag }}
-            </div>
-            <div>
-                {{ form.password }}
-            </div>
-        </div>
-<button type="submit">Upload</button>
-</form>
+      </div>
+    </div>
+
+{% endblock %}
+  

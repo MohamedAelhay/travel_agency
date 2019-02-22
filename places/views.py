@@ -1,5 +1,4 @@
 from array import array
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -12,6 +11,11 @@ from blog.models import Post, Comment
 # Create your views here.
 
 # index Test :-
+
+
+def getAllCountries():
+    countries = Country.objects.all()[:30]
+    return countries
 
 
 def index(request):
@@ -27,7 +31,7 @@ def country_page(request, countryName):
         country_cr = Gretty_Image_Crawler(country.country_Name)
         country_img_url = country_cr.get_random_url()
         country.image = country_img_url
-        context = {"country": country, "cities": cities}
+        context = {"country": country, "cities": cities, "countries": countries}
         return render(request, "country.html", context)
     except:
         return HttpResponseRedirect("/places/")
@@ -109,9 +113,6 @@ class city_handler:
             Post.objects.create(user_Name = request.user , city_Name = City(id=city_id), post_Text = postText)
 
 # Country Methods :-
-def getAllCountries():
-    countries = Country.objects.all()[:30]
-    return countries
 
 
 def homePage(request):
@@ -188,6 +189,7 @@ def getUserCarRentals(request, cityId):
     context = {"rentals": userCityRatentals}
     return context
 
+
 def showUserReservations(request):   
     try:
         reservations=UserHotelReservation.objects.get(user_Name=request.user.id) 
@@ -196,6 +198,7 @@ def showUserReservations(request):
     except:
         context={"reservations":[],"rents":[]}
     return render(request,'single.html', context)
+
 
 def showUserRentals(request):
     rents=UserCarRent.objects.get(user=request.user.id)

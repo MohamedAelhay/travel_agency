@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^(?P<hotelId>[0-9]+)/$', views.getHotelById),
     url(r'^rentcar/$', views.rentCar),
     url(r'^hotelres/$', views.hotelReservation),
-    url(r'^user/$', views.showUserReservations), 
+    url(r'^user/$', views.showUserReservations),
+
     url(r'^$', views.homePage),
 
 ]

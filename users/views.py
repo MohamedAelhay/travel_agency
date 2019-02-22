@@ -53,7 +53,7 @@ def login_view(request):
             
             if user:        
                 login(request, user)
-                return redirect('/users/')
+                return redirect('/')
             else:
                 error = "either username or password is wrong"
                 return render(request, 'registration/login.html', {'form': form,'error':error})
@@ -67,19 +67,19 @@ def logout_view(request):
 
 
 def getUserById(request, userId):
-    user=CustomUser.objects.get(id=eval(userId))
-    context={"user":user}
-    return render(request,"registration/single.html",context)
+    user = CustomUser.objects.get(id=eval(userId))
+    context = {"user": user}
+    return render(request, "single.html", context)
 
 
-def editProfile(request,userId):
-    user=CustomUser.objects.get(id=eval(userId))
-    if request.method=='POST':
-        form=UserEditForm(request.POST,instance=user)
+def editProfile(request, userId):
+    user = CustomUser.objects.get(id=eval(userId))
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, instance=user)
         if form.is_valid:
             form.save()
-            return HttpResponseRedirect("/users/login/")
+            return HttpResponseRedirect("/")
     else:
-        form=UserEditForm(instance=user)
-        context={"user_form":form}
-        return render(request,"registration/editUser.html",context)
+        form = UserEditForm(instance=user)
+        context = {"user_form": form}
+        return render(request, "registration/editUser.html", context)
