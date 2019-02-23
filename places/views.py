@@ -1,4 +1,3 @@
-from array import array
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -10,8 +9,6 @@ from blog.forms import CommentForm, PostForm
 from blog.models import Post, Comment
 # Create your views here.
 
-# index Test :-
-
 
 def getAllCountries():
     countries = Country.objects.all()[:30]
@@ -19,7 +16,7 @@ def getAllCountries():
 
 
 def index(request):
-    countries = getAllCountries()
+    countries = Country.objects.all()
     context = {"countries": countries}
     return render(request, "index.html", context)
 
@@ -31,10 +28,11 @@ def country_page(request, countryName):
         country_cr = Gretty_Image_Crawler(country.country_Name)
         country_img_url = country_cr.get_random_url()
         country.image = country_img_url
-        context = {"country": country, "cities": cities, "countries": countries}
+        context = {"country": country, "cities": cities, "countries": getAllCountries()}
         return render(request, "country.html", context)
     except:
         return HttpResponseRedirect("/places/")
+
 
 def city_page(request, countryName, cityName):
     return city_handler.handle_request(request, countryName, cityName)
@@ -46,8 +44,9 @@ class city_handler:
         try:
             country = Country.objects.get(country_Name = countryName)
             city    = City.objects.get(city_Name = cityName, country_Name_id = country.id)
-            posts = city_handler.__get_city_posts(request, city.id)
-            
+            posts   = city_handler.__get_city_posts(request, city.id)
+            # comments = city_handler.__get_city_posts(request, city.id)
+
             if request.method == 'GET':
                 form  = city_handler.__get_saved_user_rating_form(request, city.id)
 
@@ -55,8 +54,10 @@ class city_handler:
                 form      = UserCityRateForm(request.POST)
                 post_form = PostForm(request.POST)
 
+                comment_form = CommentForm(request.POST)
                 city_handler.__create_post(request, post_form, city.id)
                 city_handler.__rate_city(request, form, city.id)
+                city_handler.__create_comment(request, form, city.id)
 
             cr = Gretty_Image_Crawler(cityName)
             city_img_url = cr.get_random_url()
@@ -69,9 +70,11 @@ class city_handler:
                 "description":description,
                 "form": form,
                 "post": PostForm(),
-                "posts": posts
+                "posts": posts,
+                "comment": CommentForm(),
+                # "comments": comments
             }
-            return render(request, "city.html", context) 
+            return render(request, "city.html", context)
         except:
             return HttpResponseRedirect("/")
 
@@ -96,7 +99,20 @@ class city_handler:
         except:
             posts = []
         return posts
-    
+
+    @staticmethod
+    def __get_post_comments(request, cityId):
+        all_posts_comments = []
+        try:
+            posts = Post.objects.filter(city_Name_id=cityId)
+            for post in posts:
+                comments = Comment.objects.filter(post_Id=post.id)
+                post_comments = {'post_id': post.id, 'post_comments': comments}
+                all_posts_comments.append(post_comments)
+        except:
+            all_posts_comments = []
+        return all_posts_comments
+
     @staticmethod
     def __rate_city(request, form, cityId):
         if form.is_valid():
@@ -111,6 +127,11 @@ class city_handler:
         if post_form.is_valid():
             postText = post_form.cleaned_data.get('post_Text')
             Post.objects.create(user_Name = request.user , city_Name = City(id=city_id), post_Text = postText)
+
+    def __create_comment(request, comment_form, city_id):
+        if comment_form.is_valid():
+            commentText = comment_form.cleaned_data.get('comment_Text')
+            Comment.objects.create(user_Name = request.user , city_Name = City(id=city_id), comment_Text = commentText)
 
 # Country Methods :-
 
@@ -184,12 +205,6 @@ def getUserCityRate(request, cityId):
 
 
 @login_required
-def getUserCarRentals(request, cityId):
-    userCityRatentals = UserCarRent.objects.filter(user_id = request.user.id)
-    context = {"rentals": userCityRatentals}
-    return context
-
-
 def showUserReservations(request):   
     try:
         reservations=UserHotelReservation.objects.get(user_Name=request.user.id) 
@@ -199,7 +214,7 @@ def showUserReservations(request):
         context={"reservations":[],"rents":[]}
     return render(request,'single.html', context)
 
-
+@login_required
 def showUserRentals(request):
     rents=UserCarRent.objects.get(user=request.user.id)
     return rents
@@ -218,7 +233,7 @@ def rentCar(request):
                 time           =request.POST.get('time')
             )
 
-        return HttpResponseRedirect('/places/cities/rentCar/')
+        return HttpResponseRedirect('/rentcar/')
 
     else:
         form = UserCarRentForm()
@@ -243,3 +258,5 @@ def hotelReservation(request):
         form = HotelReservationForm()
         context = {'hotel_form': form}
         return render(request, 'hotelReservation.html', context)
+
+

@@ -10,14 +10,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-# @login_required
-def index(request):
-    if request.user.is_authenticated():
-        return HttpResponse('<h1>Hello ' + request.user.username  + '</h1>')
-    else:
-        return HttpResponse('<h1>Hello Stranger!</h1>')
-
-
 def signup_view(request):
     if request.method == 'POST':
         form = UserSignUpForm(request.POST, request.FILES)
